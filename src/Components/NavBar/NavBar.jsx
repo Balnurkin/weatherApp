@@ -15,18 +15,21 @@ export default function NavBar (){
     return(
         <Container>
             <div className="navbar">
-                <div onClick={showMenu} style={{color: 'white'}}>
+                <div onClick={showMenu} style={{color: 'white'}} >
                     {clicked ? <MdClose/> : <RxHamburgerMenu/>}
                 </div>
-                <Link to='/' style={{ display: clicked ? 'block' : 'none' }}>
-                    Home
-                </Link>
-                <Link to='/profile' style={{ display: clicked ? 'block' : 'none' }}>
-                    Profile
-                </Link>
-                <Link to='/search' style={{ display: clicked ? 'block' : 'none' }}>
-                    <BsSearch/>
-                </Link>
+                <div style={{ display: clicked ? 'flex' : 'none', gap: '20px' }} >
+                    <Link to='/' >
+                        Home
+                    </Link>
+                    <Link to='/profile' >
+                        Profile
+                    </Link>
+                    <Link to='/search' >
+                        <BsSearch/>
+                    </Link>
+                </div>
+                
             </div>
         </Container>
     )

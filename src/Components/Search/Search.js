@@ -14,7 +14,10 @@ export default function Search(){
     const onClick = () => {
         let allCityItems = JSON.parse(localStorage.getItem('CityItems')) || []
         allCityItems.push(cityName)
-        localStorage.setItem('CityItems', JSON.stringify(allCityItems))
+        const allCityItemsToLowerCase = allCityItems.map((el) => {return el.toLowerCase()})
+        const allCity = [...new Set(allCityItemsToLowerCase)]
+        const allCityData = allCity.map(el => { return el.replace(el[0], el[0].toUpperCase()) })
+        localStorage.setItem('CityItems', JSON.stringify(allCityData))
         navigate(`/${cityName}`)
     }
 
@@ -26,9 +29,7 @@ export default function Search(){
                     <input type="text" value={cityName} onChange={changeHandler} />
                     <button className="search__btn" onClick={onClick} >Find</button>
                 </div>
-                
             </div>
         </Container>
-        
     );
 }
