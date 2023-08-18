@@ -1,0 +1,15 @@
+.profile__box{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+    font-size: 20px;
+}
+
+.profile__box a{
+    color: black;
+}
+
+.list{
+    padding-bottom: 10px;
+}
