@@ -17,3 +17,7 @@
     flex-direction: column;
     gap: 10px;
 }
+.style h1{
+    margin-bottom: 20px; 
+    text-align: center;
+}

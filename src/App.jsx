@@ -4,11 +4,12 @@ import Search from "./Components/Search/Search"
 import './global.css'
 import Profile from "./Components/Profile/Profile"
 import NavBar from "./Components/NavBar/NavBar"
+import { getWeather } from "./lib/lib"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<RootLayout />}>
     <Route index element={<Home />} />
-    <Route path='/:cityName' element={<Home />} />
+    <Route path='/:cityName' element={<Home />} loader={getWeather} />
     <Route path='/search' element={<Search />} />
     <Route path='/profile' element={<Profile />} />
   </Route>

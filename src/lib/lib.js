@@ -1,3 +1,5 @@
+import { useLoaderData } from "react-router-dom"
+
 const url = process.env.REACT_APP_API_URL
 const apiKey = process.env.REACT_APP_API_KEY
 
@@ -22,9 +24,15 @@ export const fetchWeather = async (lat, lon) => {
     return {}
 }
 
-export const getWeather = async (cityName) => {
+export const getWeather = async ({params}) => {
+    const cityName = params.cityName
     const coordinates = await getCoordinates(cityName)
     const weather = await fetchWeather(coordinates.lat, coordinates.lon)
     
-    return weather
+    return {
+        cityName: cityName,
+        temp: weather?.main.temp,
+        feels_like: weather?.main.feels_like,
+        wind_speed: weather?.wind.speed
+    }
 }
