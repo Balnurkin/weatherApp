@@ -25,14 +25,21 @@ export const fetchWeather = async (lat, lon) => {
 }
 
 export const getWeather = async ({params}) => {
+    console.log(123123);
     const cityName = params.cityName
     const coordinates = await getCoordinates(cityName)
     const weather = await fetchWeather(coordinates.lat, coordinates.lon)
-    
-    return {
-        cityName: cityName,
-        temp: weather?.main.temp,
-        feels_like: weather?.main.feels_like,
-        wind_speed: weather?.wind.speed
+    console.log(weather);
+    if(!Object.keys(weather).length > 0){
+        return {}
     }
+    else{
+        return {
+            cityName: cityName,
+            temp: weather?.main.temp,
+            feels_like: weather?.main.feels_like,
+            wind_speed: weather?.wind.speed
+        }
+    }
+    
 }
